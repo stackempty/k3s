@@ -78,6 +78,9 @@ func run(app *cli.Context, cfg *cmds.Server) error {
 	serverConfig.TLSConfig.HTTPSPort = cfg.HTTPSPort
 	serverConfig.TLSConfig.HTTPPort = cfg.HTTPPort
 	serverConfig.TLSConfig.KnownIPs = knownIPs(cfg.KnownIPs)
+	serverConfig.ControlConfig.ExtraAPIArgs = cfg.ExtraAPIArgs
+	serverConfig.ControlConfig.ExtraControllerArgs = cfg.ExtraControllerArgs
+	serverConfig.ControlConfig.ExtraSchedulerAPIArgs = cfg.ExtraSchedulerArgs
 
 	_, serverConfig.ControlConfig.ClusterIPRange, err = net2.ParseCIDR(cfg.ClusterCIDR)
 	if err != nil {
